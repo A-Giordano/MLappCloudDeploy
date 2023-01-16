@@ -1,11 +1,14 @@
 import numpy as np
-import pandas as pd
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
 
 def process_data(
-    X, categorical_features=[], label=None, training=True, encoder=None, lb=None
-):
+        X,
+        categorical_features=[],
+        label=None,
+        training=True,
+        encoder=None,
+        lb=None):
     """ Process the data used in the machine learning pipeline.
 
     Processes the data using one hot encoding for the categorical features and a
@@ -14,7 +17,7 @@ def process_data(
 
     Note: depending on the type of model used, you may want to add in functionality that
     scales the continuous data.
-
+    
     Inputs
     ------
     X : pd.DataFrame
@@ -74,6 +77,6 @@ def process_data(
     # X = pd.DataFrame(X, columns=continuous_features)
     return X, y, encoder, lb
 
+
 def decode_pred(lb, pred):
     return lb.inverse_transform(pred)
-
