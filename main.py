@@ -54,6 +54,26 @@ class Features(BaseModel):
 
     class Config:
         alias_generator = replace_dash
+        schema_extra = {
+            "example": {
+                "age": 31,
+                "workclass": "Private",
+                "fnlgt": 45781,
+                "education": "Masters",
+                "education-num": 14,
+                "marital-status": "Never-married",
+                "occupation": "Prof-speciality",
+                "relationship": "Not-in-family",
+                "race": "White",
+                "sex": "Female",
+                "capital-gain": 14000,
+                "capital-loss": 0,
+                "hours-per-week": 55,
+                "native-country": "United-States",
+                "salary": ">50K"
+            }
+        }
+
 
 
 # POST request to /predict site. Used to validate model with sample census data
