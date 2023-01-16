@@ -1,7 +1,7 @@
 # Put the code for your API here.
 
-from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi import FastAPI
 from typing import Optional
 import pandas as pd
 import joblib
@@ -15,8 +15,6 @@ model = joblib.load("model/inference_model.pkl")
 encoder = joblib.load("model/encoder.pkl")
 binarizer = joblib.load("model/label_binarizer.pkl")
 
-# Home site with welcome message - GET request
-
 
 @app.get("/", tags=["home"])
 async def get_root() -> dict:
@@ -28,11 +26,8 @@ async def get_root() -> dict:
     }
 
 
-# Alias Generator funtion for class CensusData
 def replace_dash(string: str) -> str:
     return string.replace('_', '-')
-
-# Class definition of the data that will be provided as POST request
 
 
 class Features(BaseModel):
@@ -75,8 +70,6 @@ class Features(BaseModel):
         }
 
 
-
-# POST request to /predict site. Used to validate model with sample census data
 @app.post('/predict')
 async def predict(input: Features):
     """
