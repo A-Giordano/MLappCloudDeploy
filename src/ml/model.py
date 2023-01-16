@@ -66,7 +66,7 @@ def inference(model, X):
 
 
 def to_pickle(obj, name: str):
-    with open(f"starter/model/{name}.pkl", "wb") as file:
+    with open(f"model/{name}.pkl", "wb") as file:
         pickle.dump(obj, file)
 
 
@@ -75,7 +75,7 @@ def save_performance_on_slices(X_raw, preds, y_test, categorical_features=[]):
     # preds = model.predict(X_test)
     X_raw = X_raw.reset_index(drop=True)
     output_file_lines = []
-    with open('starter/model/slice_output.txt', 'w') as f:
+    with open('model/slice_output.txt', 'w') as f:
         for cat in categorical_features:
             f.write("--------------------------\n")
             f.write(f"Performance on category: {cat}\n")

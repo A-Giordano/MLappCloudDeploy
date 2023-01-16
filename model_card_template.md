@@ -12,7 +12,7 @@ The data was obtained from the UCI Machine Learning Repository (https://archive.
 The original data set has 32561 rows, and a 80-20 split was used to break this into a train and test set. No stratification was done. To use the data for training a One Hot Encoder was used on the features and a label binarizer was used on the labels.
 
 ## Metrics
-The model was evaluated using precision, recall and fbeta.
+The model was evaluated using precision: 0.74, recall: 0.64 and fbeta:0.69
 
 ## Ethical Considerations
 The model is trained over socioeeconomics data from 1994, reflecting biases of that age.
