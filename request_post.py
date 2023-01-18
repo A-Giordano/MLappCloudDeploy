@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 import requests
 
 payload = {
@@ -25,7 +15,6 @@ payload = {
         "capital-loss": 0,
         "hours-per-week": 55,
         "native-country": "United-States",
-        "salary": ">50K"
     }
 
 res = requests.post("https://mlappclouddeploy.onrender.com/predict", json=payload)
