@@ -45,7 +45,6 @@ class Features(BaseModel):
     capital_loss: int
     hours_per_week: int
     native_country: str
-    salary: Optional[str]
 
     class Config:
         alias_generator = replace_dash
@@ -65,7 +64,6 @@ class Features(BaseModel):
                 "capital-loss": 0,
                 "hours-per-week": 55,
                 "native-country": "United-States",
-                "salary": ">50K"
             }
         }
 
@@ -94,7 +92,7 @@ async def predict(input: Features):
 
     X_train, _, _, _ = process_data(
         input_df, categorical_features=cat_features,
-        label='salary', training=False, encoder=encoder, lb=binarizer)
+        label=None, training=False, encoder=encoder, lb=binarizer)
 
     preds = decode_pred(binarizer, inference(model, X_train))[0]
     return {"result": preds}

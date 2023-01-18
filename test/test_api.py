@@ -25,7 +25,6 @@ def json_sample(request):
         "capital-loss": 0,
         "hours-per-week": 55,
         "native-country": "United-States",
-        "salary": ">50K"
     }
 
     return payload
@@ -48,7 +47,6 @@ def json_sample_2(request):
         "capital-loss": 0,
         "hours-per-week": 55,
         "native-country": "United-States",
-        "salary": "<=50K"
     }
 
     return payload
@@ -71,7 +69,6 @@ def json_sample_with_error(request):
         "capital-loss": 0,
         "hours-per-week": 55,
         "native-country": "United-States",
-        "salary": "<=50K"
     }
 
     return payload
@@ -87,13 +84,13 @@ def test_get_root(client):
 def test_predict(client, json_sample):
     response = client.post("/predict", json=json_sample)
     assert response.status_code == 200
-    assert response.json()["result"] == json_sample["salary"]
+    assert response.json()["result"] == ">50K"
 
 
 def test_predict_2(client, json_sample_2):
     response = client.post("/predict", json=json_sample_2)
     assert response.status_code == 200
-    assert response.json()["result"] == json_sample_2["salary"]
+    assert response.json()["result"] == "<=50K"
 
 
 def test_predict_error_422(client, json_sample_with_error):
